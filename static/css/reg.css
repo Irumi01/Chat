@@ -1,0 +1,54 @@
+body {
+    background-color: black;
+    
+}
+
+.py-2 {
+    margin-top: 20px;
+}
+
+.hight-text {
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+
+.form-control {
+    margin-top: 10px;
+    
+}
+
+
+.container-inp {
+    
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+
+    
+}
+.wrapper {
+    max-width:40%;
+    margin: 0 auto;
+}
+.form {
+    margin: 0 auto;
+}
+.inp-1,
+.inp-2,
+.inp-3,
+.inp-4 {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.btn-reg {
+    color: white;
+    background-color: rgb(110, 110, 255);
+}
+
+.exc {
+    color: red;
+}
+
+
