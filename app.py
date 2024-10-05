@@ -18,6 +18,16 @@ class Users(db.Model):
 
     def __repr__(self):
         return f"<users {self.id}>"
+
+class Chat(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    message = db.Column(db.String(100), nullable=True)
+    date = db.Column(db.DateTime, default=datetime.utcnow)
+
+    message_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+
+    def __repr__(self):
+        return f"<chat {self.id}>"
     
 class Profiles(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -33,7 +43,6 @@ class Profiles(db.Model):
 
 def user_exists(email):
     return db.session.query(Users).filter_by(email=email).first() is not None
-
 
 @app.route('/')
 def index():
@@ -84,9 +93,23 @@ def login():
     return render_template('login.html')
 
 
-@app.route('/chat')
+@app.route('/chat', methods=('POST', 'GET'))
 def chat():
-    return render_template('chat.html')
+    chat = Chat.query.order_by(Chat.date).all()
+    
+    if request.method == 'POST':
+        
+        try:
+            messages = Chat(message=request.form['message'], message_id=Users.id)
+
+            db.session.add(messages)
+            db.session.flush()
+            db.session.commit()
+        except:
+            db.session.rollback()
+            return 'Ошибка'
+
+    return render_template('chat.html', chat=chat)
 
 @app.route('/home')
 def index_home():

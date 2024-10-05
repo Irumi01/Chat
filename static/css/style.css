@@ -14,6 +14,7 @@ a {
 .center-text3,
 .center-text2,
 .center-text {
+    color: azure;
     display: flex;
     justify-content: center;
     margin-top: 200px;
@@ -43,7 +44,7 @@ a {
     text-align: center;
 }
   
-  .button-style:hover, .button-style:focus {
+.button-style:hover, .button-style:focus {
     background: #0285bd;
 }
 
@@ -57,7 +58,7 @@ a {
     text-align: center;
 }
   
-  .button2-style:hover, .button-style:focus {
+.button2-style:hover, .button-style:focus {
     background: #30b500;
 }
 

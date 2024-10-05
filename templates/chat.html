@@ -35,14 +35,23 @@
         <div class="container">
           <div class="cont">
             <div class="area-write">
-              <p class="text name"><time datetime="2018-09-23">[в прошлую субботу]</time>Alex:<span class="text">"Ku KU gays"</span></p>
-              <p class="text name"><time datetime="2018-09-23">[в прошлую субботу]</time>Boris:<span class="text">"Ku KU minibobr"</span></p>
+              {% if chat.id|length > 0 %}
+                {% for el in chat %}
+                  <p>{{ el.message }}</p>
+                {% endfor %}
+              {% else %}
+                <p>В чате пусто</p>
+              {% endif %}
             </div>
             <div class="input-text">
-              <form name="test" method="post" action="#">
+              <form action="" method="POST">
+                <input type="text" name="message" placeholder="Напишите сообщение" value="" required>
+                <button type="submit" class="btn-input">Send</button>
+              </form>
+              <!-- <form name="test" method="post" action="#">
                 <textarea name="comment" cols="85" rows="5" autofocus></textarea>
               </form>
-              <button type="submit" class="btn-input">Send</button>
+              <button type="submit" class="btn-input">Send</button> -->
             </div>
           </div>
           
